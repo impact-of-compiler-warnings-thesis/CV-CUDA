@@ -37,7 +37,8 @@ jobs:
                    -DCMAKE_C_COMPILER=gcc-11 \
                    -DCMAKE_CXX_COMPILER=g++-11 \
                    -DCMAKE_BUILD_TYPE=Debug \
-                   -DBUILD_TESTS=1
+                   -DBUILD_TESTS=1 \
+                   -DENABLE_COMPAT_OLD_GLIBC=OFF
       - name: Run build-wrapper
         run: |
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} ninja -C build
