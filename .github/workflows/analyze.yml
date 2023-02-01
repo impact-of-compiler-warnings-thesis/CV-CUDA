@@ -22,7 +22,9 @@ jobs:
         run: |
           sudo apt update
           sudo apt install ninja-build \
-                           libopencv-dev
+                           libopencv-dev \
+                           gcc-11 \
+                           g++-11
       - name: Install CUDA toolkit
         uses: Jimver/cuda-toolkit@v0.2.8
         id: cuda-toolkit
@@ -32,6 +34,8 @@ jobs:
         run: |
           mkdir build && cd build
           cmake .. -GNinja \
+                   -DCMAKE_C_COMPILER=gcc-11 \
+                   -DCMAKE_CXX_COMPILER=g++-11 \
                    -DCMAKE_BUILD_TYPE=Debug \
                    -DBUILD_TESTS=1
       - name: Run build-wrapper
